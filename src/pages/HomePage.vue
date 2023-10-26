@@ -9,45 +9,20 @@ import { useRoute } from 'vue-router'
 		<div class="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
 		<div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
 			<div class="mx-auto max-w-md">
-				<img src="https://toddr.org/assets/images/t-logo.png" class="h-6" alt="Tailwind Play" />
+				<div class="content-left">
+					<h6>
+						<img src="https://toddr.org/assets/images/t-logo.png" class="h-10 inline" alt="Tailwind Play" />
+						<span class="text-gray-900 text-lg font-semibold pl-4">CSIS 321 Burndown Generator</span>
+					</h6>
+					<hr class="h-0.5 mx-auto my-4 bg-gray-700 border-0 rounded dark:bg-gray-700" />
+				</div>
+				
 				<div class="divide-y divide-gray-300/50">
-					<div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-						<p>Login with GitLab:</p>	
-						<ul class="space-y-4">
-							<li class="flex items-center">
-								<svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
-									<circle cx="12" cy="12" r="11" />
-									<path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-								</svg>
-								<p class="ml-4">
-									Customizing your
-									<code class="text-sm font-bold text-gray-900">tailwind.config.js</code> file
-								</p>
-							</li>
-							<li class="flex items-center">
-								<svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
-									<circle cx="12" cy="12" r="11" />
-									<path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-								</svg>
-								<p class="ml-4">
-									Extracting classes with
-									<code class="text-sm font-bold text-gray-900">@apply</code>
-								</p>
-							</li>
-							<li class="flex items-center">
-								<svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
-									<circle cx="12" cy="12" r="11" />
-									<path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-								</svg>
-								<p class="ml-4">Code completion with instant preview</p>
-							</li>
-						</ul>
-						<p>Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online.</p>
-					</div>
-					<div class="pt-8 text-base font-semibold leading-7">
-						<p class="text-gray-900">Want to dig deeper into Tailwind?</p>
+					<div class="pt-0 text-base leading-7">
+						
+						<p class="text-gray-900">To get started, you need to login with GitLab</p>
 						<p>
-							<a href="https://tailwindcss.com/docs" class="text-sky-500 hover:text-sky-600">Read the docs &rarr;</a>
+							<a class="font-semibold text-sky-500 hover:text-sky-600" href="https://gitlab.com/oauth/authorize?client_id=bee52279fd0a1a30db7bfae74dba880a0a4de72fb1e0f96d25339f62154f3925&redirect_uri=http://localhost:5173/stage/auth_callback&response_type=code&state=init_login&scope=read_user+read_repository&code_challenge=2i0WFA-0AerkjQm4X4oDEhqA17QIAKNjXpagHBXmO_U&code_challenge_method=S256">Login with GitLab &rarr;</a>
 						</p>
 					</div>
 				</div>
