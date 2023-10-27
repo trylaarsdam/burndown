@@ -23,7 +23,7 @@ const selectProject = () => {
 }
 
 onMounted( async () => {
-	if (store.auth_token == '' || store.auth_token == null || store.auth_token == undefined) {
+	if (store.access_token != '' && store.access_token != null && store.access_token != undefined) {
 		var response = await fetch("https://gitlab.com/api/v4/projects?per_page=100&membership=true&simple=true", {
 			method: "GET",
 			headers: {

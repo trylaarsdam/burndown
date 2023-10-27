@@ -7,6 +7,8 @@ import AuthorizationPageVue from './pages/AuthorizationPage.vue'
 import ChooseProjectPageVue from './pages/ChooseProjectPage.vue'
 import ChooseMilestonePageVue from './pages/ChooseMilestonePage.vue'
 import LoadIssuesPageVue from './pages/LoadIssuesPage.vue'
+import CalculateEffortPageVue from './pages/CalculateEffortPage.vue'
+import ChartPageVue from './pages/ChartPage.vue'
 
 import * as Vue from 'vue';
 import * as VueRouter from 'vue-router'; // alternative ways of importing
@@ -16,7 +18,9 @@ const routes = [
 	{ path: '/stage/auth_callback', component: AuthorizationPageVue},
 	{ path: '/stage/choose_project', component: ChooseProjectPageVue},
 	{ path: '/stage/choose_milestone', component: ChooseMilestonePageVue},
-	{ path: '/stage/load_issues', component: LoadIssuesPageVue}
+	{ path: '/stage/load_issues', component: LoadIssuesPageVue},
+	{ path: '/stage/calculate_effort', component: CalculateEffortPageVue},
+	{ path: '/stage/chart', component: ChartPageVue},
   // { path: '/about', component: About },
 ]
 

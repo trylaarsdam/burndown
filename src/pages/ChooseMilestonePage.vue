@@ -10,11 +10,12 @@ const error = ref(false);
 const error_message = ref("Unknown error");
 
 const milestones = ref([]);
-const selected_milestone = ref("");
+const selected_milestone = ref({});
 
 const selectMilestone = () => {
 	if (selected_milestone.value != "") {
-		store.milestone_id = selected_milestone.value;
+		store.milestone_id = selected_milestone.value.id;
+		store.milestone = selected_milestone.value;
 		router.push("/stage/load_issues")
 	}
 	else {
@@ -24,7 +25,7 @@ const selectMilestone = () => {
 }
 
 onMounted( async () => {
-	if (store.auth_token == '' || store.auth_token == null || store.auth_token == undefined) {
+	if (store.access_token != '' && store.access_token != null && store.access_token != undefined) {
 		if (store.project_id == '' || store.project_id == null || store.project_id == undefined) {
 			loading.value = false;
 			error.value = true;
@@ -85,11 +86,11 @@ onMounted( async () => {
 						<div class="text-base font-semibold leading-7 flex">
 							<label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
 								<select v-model="selected_milestone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-									<option disabled value="">Choose a milestone</option>
-									<option v-for="option in milestones" :value="option.id.toString()" :key="option.id.toString()">{{option.title}}</option>
+									<option disabled :value="{}">Choose a milestone</option>
+									<option v-for="option in milestones" :value="option" :key="option.id.toString()">{{option.title}}</option>
 								</select>
 						</div>
-						<button :disabled="selected_milestone == ''" @click="selectMilestone" class="mt-4 bg-green-500 text-white disabled:bg-gray-500 font-semibold py-2 px-4 rounded">Continue</button>
+						<button :disabled="selected_milestone == {}" @click="selectMilestone" class="mt-4 bg-green-500 text-white disabled:bg-gray-500 font-semibold py-2 px-4 rounded">Continue</button>
 					</div>
 					<div class="text-base leading-7" v-if="error">
 						<span class="text-red-500 font-semibold">An error occurred while fetching the milestones for this project.</span>
