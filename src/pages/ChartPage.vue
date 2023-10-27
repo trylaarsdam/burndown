@@ -37,8 +37,6 @@ const chart_options = ref({
 					display: true
 				}
 			},
-			responsive: true,
-			maintainAspectRatio: true,
 			plugins: {
 				title: {
 					display: true,
@@ -76,11 +74,11 @@ onMounted( async () => {
 </script>
 
 <template>
-	<div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+	<div class="relative responsive flex max-h-full flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12" style="min-height: 75%">
 		<router-link style="z-index: 10000" to="/stage/choose_project"><button class="fixed bottom-5 right-5 mt-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded">Restart</button></router-link>
 		<div class="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-		<div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10" style="min-width:75%;">
-			<div class="mx-auto">
+		<div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10" style="min-width:75%; min-height: 75%;">
+			<div class="">
 				<div class="content-left">
 					<h6>
 						<img src="https://toddr.org/assets/images/t-logo.png" class="h-10 inline" alt="Tailwind Play" />
