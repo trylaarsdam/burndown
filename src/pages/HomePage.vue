@@ -1,8 +1,16 @@
 <script setup>
-import { defineComponent } from 'vue'
-import { useRoute } from 'vue-router'
+import { defineComponent, onMounted } from 'vue'
+import { store } from '../store.js'
+import { v4 } from 'uuid'
+
+
+
+onMounted(async () => {
+
+});
 
 </script>
+
 
 <template>
 	<div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
@@ -22,7 +30,7 @@ import { useRoute } from 'vue-router'
 						
 						<p class="text-gray-900">To get started, you need to login with GitLab</p>
 						<p>
-							<a class="font-semibold text-sky-500 hover:text-sky-600" href="https://gitlab.com/oauth/authorize?client_id=bee52279fd0a1a30db7bfae74dba880a0a4de72fb1e0f96d25339f62154f3925&redirect_uri=http://localhost:5173/stage/auth_callback&response_type=code&state=init_login&scope=read_user+read_repository&code_challenge=2i0WFA-0AerkjQm4X4oDEhqA17QIAKNjXpagHBXmO_U&code_challenge_method=S256">Login with GitLab &rarr;</a>
+							<a class="font-semibold text-sky-500 hover:text-sky-600" :href="'https://gitlab.com/oauth/authorize?client_id=bee52279fd0a1a30db7bfae74dba880a0a4de72fb1e0f96d25339f62154f3925&redirect_uri=http://localhost:5173/stage/auth_callback&response_type=code&state=init_login&scope=read_user+read_repository&code_challenge=' + store.code_challenge + '&code_challenge_method=S256'">Login with GitLab &rarr;</a>
 						</p>
 					</div>
 				</div>

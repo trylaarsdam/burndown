@@ -1,49 +1,51 @@
-<script setup async>
-import { defineComponent, onMounted } from 'vue'
+<script async setup>
+import { defineComponent, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { store } from '../store.js'
 const { query } = useRoute()
 
-var loading = true;
-var error = false;
-var error_message = "Unknown error";  
-
+const loading = ref(true);
+const error = ref(false);
+const error_message = ref("Unknown error");
 
 onMounted( async () => {
 	if (query.state == "init_login") {
 		if (query.code == undefined) {
-			loading = true;
-			error = true;
-			error_message = "Auth callback code was not provided"
+			loading.value = true;
+			error.value = true;
+			error_message.value = "Auth callback code was not provided"
+		}
+		else if (store.code_verifier == undefined || store.code_verifier == "" || store.code_verifier == null) {
+			loading.value = false;
+			error.value = true;
+			error_message.value = "Missing PKCE code verifier in internal state. Go back and try again."
 		}
 		else {
 			var response = await fetch("https://gitlab.com/oauth/token?" + new URLSearchParams({
-				client_secret: "gloas-e407dd58dc36533e8cae553c795716143ce9f8c2b1557021c536521d12c66a7e",
 				client_id: "bee52279fd0a1a30db7bfae74dba880a0a4de72fb1e0f96d25339f62154f3925",
 				code: query.code,
 				grant_type: "authorization_code",
 				redirect_uri: "http://localhost:5173/stage/auth_callback",
-				state: query.state,
-				// code_verifier: "ks02i3jdikdo2k0dkfodf3m39rjfjsdk0wk349rj3jrhf",
+				code_verifier: store.code_verifier,
 			}), {
 				method: "POST",
-				mode: "no-cors"
 			});
-
-			if(response.ok) {
+			
+			if(response.status == 200) {
 				var json = await response.json();
 				console.log(json);
 			}
 			else {
-				loading = true;
-				error = true;
-				error_message = "Auth callback code was rejected"
+				loading.value = false;
+				error.value = true;
+				error_message.value = "Auth callback code was rejected"
 			}
 		}
 	}
 	else {
-		loading = false;
-		error = true;
-		error_message = "Auth callback state was invalid"
+		loading.value = false;
+		error.value = true;
+		error_message.value = "Auth callback state was invalid"
 	}
 });
 
