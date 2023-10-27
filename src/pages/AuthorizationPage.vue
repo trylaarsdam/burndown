@@ -28,7 +28,7 @@ onMounted( async () => {
 				client_id: "bee52279fd0a1a30db7bfae74dba880a0a4de72fb1e0f96d25339f62154f3925",
 				code: query.code,
 				grant_type: "authorization_code",
-				redirect_uri: "http://localhost:5173/stage/auth_callback",
+				redirect_uri: "https://burndown.toddr.org/stage/auth_callback",
 				code_verifier: store.code_verifier,
 			}), {
 				method: "POST",
