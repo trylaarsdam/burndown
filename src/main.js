@@ -4,13 +4,15 @@ import App from './App.vue'
 
 import HomePageVue from './pages/HomePage.vue'
 import AuthorizationPageVue from './pages/AuthorizationPage.vue'
+import ChooseProjectPageVue from './pages/ChooseProjectPage.vue'
 
 import * as Vue from 'vue';
 import * as VueRouter from 'vue-router'; // alternative ways of importing
 
 const routes = [
   { path: '/', component: HomePageVue },
-	{ path: '/stage/auth_callback', component: AuthorizationPageVue}
+	{ path: '/stage/auth_callback', component: AuthorizationPageVue},
+	{ path: '/stage/choose_project', component: ChooseProjectPageVue},
   // { path: '/about', component: About },
 ]
 
